@@ -163,7 +163,12 @@
                 // Wait for fade animation, then move to Stage 2
                 setTimeout(() => {
                     stage = 2;
-                    diatomGrid.classList.add('hidden');
+                    // Don't hide the grid, just remove the faded out diatoms
+                    diatoms.forEach(d => {
+                        if (d !== selectedDiatom) {
+                            d.style.display = 'none';
+                        }
+                    });
                     circleTarget.classList.add('visible');
                     startMouseFollow();
                 }, 600);
